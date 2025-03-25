@@ -16,7 +16,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <style>
         :root {
-            --primary-color: #1fcf8c;
+            --primary-color: #299e71;
             --primary-color-rgb: 207, 31, 31;
         }
     </style>
@@ -36,7 +36,7 @@
                                     <!-- logo begin -->
                                     <div id="logo">
                                         <a href="index.html">
-                                            <img alt="" class="logo" src="images/logo.png" />
+                                            <img alt="" class="logo" src="images/sathees007.jpg" />
                                             <img alt="" class="logo-2" src="images/logo.png" />
                                         </a>
                                     </div>
@@ -92,7 +92,7 @@
              <!-- load external content close -->
 
             <section aria-label="section" class="jarallax no-top no-bottom text-light">
-                <img src="images/background/1.jpg" class="jarallax-img" alt="">
+                <img src="images/background/1234.png" class="jarallax-img" alt="">
                 <div class="v-center">
                     <div class="container">
                         <div class="row align-items-center">
@@ -150,7 +150,7 @@
                                     <div class="circle" data-percent="75">
                                         <div></div>
                                     </div>
-                                    <h4>vb</h4>
+                                    <h4>Visual Basic</h4>
                                 </div>
                             </div>
                         </div>
@@ -505,16 +505,16 @@
                         </div>
                         <div class="col-lg-8 offset-lg-2 wow fadeInUp">
                             <div class="contact_form_wrapper">
-                                <form name="contactForm" id="contact_form" class="form-border" method="post" action="#">
+                                <form name="contactForm" id="contact_form" class="form-border">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="field-set">
-                                                <input type="text" name="Name" id="name" class="form-control" placeholder="Your Name" required>
+                                                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="field-set">
-                                                <input type="text" name="Email" id="email" class="form-control" placeholder="Your Email" required>
+                                                <input type="email" name="email" id="email" class="form-control" placeholder="Your Email" required>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -527,20 +527,57 @@
                                         <div class="field-set">
                                             <textarea name="message" id="message" class="form-control" placeholder="Your Message" required></textarea>
                                         </div>
-                                        <div class="g-recaptcha" data-sitekey="copy-your-site-key-here"></div>
                                         <div id='submit' class="mt10">
-                                            <input type='submit' id='send_message' value='Send Message' class="btn-main">
+                                            <button type="button" id="send_message" class="btn-main">Send Message</button>
                                         </div>
-
-                                        <div id="success_message" class='success'>
+                                
+                                        <div id="success_message" class="success" style="display:none;">
                                             Your message has been sent successfully. Refresh this page if you want to send more messages.
                                         </div>
-                                        <div id="error_message" class='error'>
-                                            Sorry there was an error sending your form.
+                                        <div id="error_message" class="error" style="display:none;">
+                                            Sorry, there was an error sending your form.
                                         </div>
-
                                     </div>
                                 </form>
+                                
+                                <!-- EmailJS Script -->
+                                <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+                                <script>
+                                    (function() {
+                                        emailjs.init("8SEiy2cjP_CUZetPY"); // Initialize EmailJS with your public key
+                                    })();
+                                
+                                    document.getElementById("send_message").addEventListener("click", function() {
+                                        let name = document.getElementById("name").value;
+                                        let email = document.getElementById("email").value;
+                                        let phone = document.getElementById("phone").value;
+                                        let message = document.getElementById("message").value;
+                                
+                                        if (!name || !email || !phone || !message) {
+                                            alert("Please fill in all fields.");
+                                            return;
+                                        }
+                                
+                                        let templateParams = {
+                                            name: name,
+                                            email: email,
+                                            phone: phone,
+                                            message: message
+                                        };
+                                
+                                        emailjs.send("service_bgm425f", "template_7dc88oj", templateParams)
+                                            .then(function(response) {
+                                                document.getElementById("success_message").style.display = "block";
+                                                document.getElementById("error_message").style.display = "none";
+                                                document.getElementById("contact_form").reset();
+                                            }, function(error) {
+                                                document.getElementById("error_message").style.display = "block";
+                                                document.getElementById("success_message").style.display = "none";
+                                                console.log("Error:", error);
+                                            });
+                                    });
+                                </script>
+                                
                             </div>
                             <div class="spacer-double"></div>
                             <div class="row text-center wow fadeInUp">
