@@ -278,12 +278,26 @@ header .logo-scroll {
     display: none;
 }
 
+/* Default logo size */
 header .logo,
 header .logo-2 {
-    font-family: var(--body-font);
-    color: #fff;
-    font-size: 40px;
-    font-weight: 300;
+    max-width: 250px;  /* Set a fixed width */
+    height: auto;       /* Maintain aspect ratio */
+}
+
+/* Adjust logo size for smaller screens */
+@media screen and (max-width: 768px) {
+    header .logo,
+    header .logo-2 {
+        max-width: 250px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header .logo,
+    header .logo-2 {
+        max-width: 200px;
+    }
 }
 
 header .logo-2 {
@@ -12052,6 +12066,25 @@ list-style: none;
     display: flex;
     align-items: center;
 }
+.jarallax-img {
+    width: 100%;  /* Makes the image responsive */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Prevents unwanted spacing */
+    max-width: 100%; /* Ensures it doesn't exceed the container */
+}
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    .jarallax-img {
+        max-height: 400px; /* Prevents too much height usage */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .jarallax-img {
+        max-height: 300px; /* Further reduces height on small screens */
+    }
+}
 
 
 .f-logo {
@@ -17994,6 +18027,9 @@ img {
     h1.ultra-big.s2 {
         font-size: 42px;
         line-height: 45px;
+    }
+    .jarallax img{
+        height: 100vh;
     }
 
 
